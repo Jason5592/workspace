@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/rabbit
+       http://www.springframework.org/schema/rabbit/spring-rabbit.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:rabbitmq.properties"/>
+
+    <!-- 定义rabbitmq connectionFactory -->
+    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}"
+                               port="${rabbitmq.port}"
+                               username="${rabbitmq.username}"
+                               password="${rabbitmq.password}"
+                               virtual-host="${rabbitmq.virtual-host}"/>
+    <!--定义管理交换机、队列-->
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <bean id="rabbitMessageListener" class="com.archforce.jason.rabbitmq.listener.RabbitMessageListener"/>
+
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual">
+        <rabbit:listener ref="rabbitMessageListener" queue-names="hello"/>
+        <rabbit:listener ref="rabbitMessageListener" queue-names="work"/>
+        <rabbit:listener ref="rabbitMessageListener" queue-names="pubsub1"/>
+        <rabbit:listener ref="rabbitMessageListener" queue-names="pubsub2"/>
+        <rabbit:listener ref="rabbitMessageListener" queue-names="routing1"/>
+        <rabbit:listener ref="rabbitMessageListener" queue-names="routing2"/>
+    </rabbit:listener-container>
+</beans>
