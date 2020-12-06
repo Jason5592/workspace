@@ -69,15 +69,16 @@
     </rabbit:topic-exchange>
 
     <!-- 延时队列 -->
-    <rabbit:queue id="queue_ttl" name="ttl" auto-declare="true">
+    <rabbit:queue id="queue_close_order_ttl" name="close_order_ttl" auto-declare="true">
         <rabbit:queue-arguments>
-            <entry key="x-message-ttl" value="1800000" value-type="java.lang.Integer"/>
+            <entry key="x-message-ttl" value="10000" value-type="java.lang.Integer"/>
             <entry key="x-max-length" value="1000" value-type="java.lang.Integer"/>
             <entry key="x-dead-letter-exchange" value="dead_letter_exchange"/>
-            <entry key="x-dead-letter-routing-key" value="close.order.get"/>
+            <entry key="x-dead-letter-routing-key" value="order.close.generate"/>
         </rabbit:queue-arguments>
     </rabbit:queue>
 
+    <!-- 死信队列(交换机) -->
     <rabbit:queue id="close_order_queue" name="close_order_queue"/>
     <rabbit:topic-exchange id="dead_letter_exchange" name="dead_letter_exchange">
         <rabbit:bindings>

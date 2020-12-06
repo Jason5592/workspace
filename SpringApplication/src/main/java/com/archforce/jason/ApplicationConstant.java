@@ -14,4 +14,5 @@ public interface ApplicationConstant {
     String QUEUE_ROUTING2= "routing2";
     String QUEUE_TOPIC1= "topic1";
     String QUEUE_TOPIC2= "topic2";
+    String QUEUE_CLOSE_ORDER_TTL= "close_order_ttl";
 }
