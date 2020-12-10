@@ -4,8 +4,10 @@ import cn.wuyuanwei.PingPongProto.Ping;
 import cn.wuyuanwei.PingPongProto.Pong;
 import cn.wuyuanwei.PingPongServiceGrpc.PingPongServiceImplBase;
 import io.grpc.Server;
-import io.grpc.ServerBuilder;
+import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
+import io.grpc.netty.shaded.io.netty.channel.ChannelOption;
 import io.grpc.stub.StreamObserver;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +24,7 @@ public class PingPongServer {
 
   public static void main(String[] args) throws IOException, InterruptedException {
     int port = 50050;
-    Server server = ServerBuilder.forPort(port).addService(new PingPongImpl()).build();
+    Server server = NettyServerBuilder.forPort(port).withChildOption(ChannelOption.TCP_NODELAY, true).addService(new PingPongImpl()).build();
 
     Runtime.getRuntime().addShutdownHook(new Thread(() -> {
       System.err.println("*** Shutting down ping-pong gRPC server");

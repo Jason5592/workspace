@@ -25,5 +25,6 @@ public class Receiver extends DefaultConsumer {
         log.info(RABBITMQ_LOG_PREFIX + "receive message[" + new String(body) + "].");
         // multiple=false表示只签收当前消息，true会签收所有未签收的消息
         channel.basicAck(envelope.getDeliveryTag(), false);
+//        channel.basicNack(envelope.getDeliveryTag(), false, true);
     }
 }
