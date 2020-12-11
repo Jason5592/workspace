@@ -7,6 +7,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @Slf4j
 public class RabbitmqMessageService implements RabbitTemplate.ConfirmCallback, RabbitTemplate.ReturnCallback {
@@ -17,11 +19,14 @@ public class RabbitmqMessageService implements RabbitTemplate.ConfirmCallback, R
     public void sendMessage(String exchange, String routingKey, Object msg) {
         //消息发送失败返回到队列中, yml需要配置 publisher-returns: true
         rabbitTemplate.setMandatory(true);
+
         //消息消费者确认收到消息后，手动ack回执
         rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.setReturnCallback(this);
         //发送消息
-        rabbitTemplate.convertAndSend(exchange, routingKey, msg);
+        CorrelationData correlationData = new CorrelationData();
+        correlationData.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+        rabbitTemplate.convertAndSend(exchange, routingKey, msg, correlationData);
     }
 
     @Override

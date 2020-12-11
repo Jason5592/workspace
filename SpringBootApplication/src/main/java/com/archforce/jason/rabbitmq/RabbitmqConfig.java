@@ -9,7 +9,7 @@ import static com.archforce.jason.ApplicationConstant.EXCHANGE_FANOUT;
 import static com.archforce.jason.ApplicationConstant.QUEUE_PUBSUB1;
 
 @Configuration
-public class RabbitConfig {
+public class RabbitmqConfig {
 
     @Bean("pubsubQueue1")
     public Queue pubsubQueue1() {
