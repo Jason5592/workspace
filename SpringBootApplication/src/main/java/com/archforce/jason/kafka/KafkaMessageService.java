@@ -15,18 +15,18 @@ public class KafkaMessageService implements ProducerListener<String, Object> {
     @Autowired
     public KafkaTemplate<String, Object> kafkaTemplate;
 
-    public void sendMessage(String topic, Object msg) {
+    public void sendMessage(String topic, int partition, String key, Object value) {
         kafkaTemplate.setProducerListener(this);
-        kafkaTemplate.send(topic, msg);
+        kafkaTemplate.send(topic, partition, key, value);
     }
 
     @Override
     public void onSuccess(ProducerRecord<String, Object> producerRecord, RecordMetadata recordMetadata) {
-        log.info("消息[" + producerRecord.value() + "]发送成功！");
+        log.info("消息key[" + producerRecord.key() + "], value[" + producerRecord.value() + "]发送成功！");
     }
 
     @Override
     public void onError(ProducerRecord<String, Object> producerRecord, Exception exception) {
-        log.info("消息[" + producerRecord.value() + "]发送失败！");
+        log.info("消息key[" + producerRecord.key() + "], value[" + producerRecord.value() + "]发送成功！");
     }
 }

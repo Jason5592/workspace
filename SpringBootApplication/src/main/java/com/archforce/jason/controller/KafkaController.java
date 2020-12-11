@@ -16,7 +16,7 @@ public class KafkaController {
 
     @RequestMapping("/send")
     public String send() {
-        messageService.sendMessage("test-topic", "hello");
+        messageService.sendMessage("test-topic", 0, "1", "hello");
         return "消息发送成功！";
     }
 }
