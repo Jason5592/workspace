@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-public class HelloWorldClient {
+public class HelloWorldServiceClient {
 
     private static final HelloWorldServiceGrpc.HelloWorldServiceBlockingStub helloWorldServiceBlockingStub;
 
@@ -43,24 +43,24 @@ public class HelloWorldClient {
 
     @Test
     public void test1() {
-        HelloWorldClient helloWorldClient = new HelloWorldClient();
-        String result = helloWorldClient.sayHello("wang", "jason");
+        HelloWorldServiceClient helloWorldServiceClient = new HelloWorldServiceClient();
+        String result = helloWorldServiceClient.sayHello("wang", "jason");
         System.out.println(result);
     }
 
     @Test
     public void test2() {
-        HelloWorldClient helloWorldClient = new HelloWorldClient();
+        HelloWorldServiceClient helloWorldServiceClient = new HelloWorldServiceClient();
         int a = 1;
         int b = 2;
-        int result = helloWorldClient.addOperation(a, b);
+        int result = helloWorldServiceClient.addOperation(a, b);
         System.out.println(result);
     }
 
     @Test
     public void test3() {
-        HelloWorldClient helloWorldClient = new HelloWorldClient();
-        int result = helloWorldClient.addOperation1(Arrays.asList(1, 2, 3));
+        HelloWorldServiceClient helloWorldServiceClient = new HelloWorldServiceClient();
+        int result = helloWorldServiceClient.addOperation1(Arrays.asList(1, 2, 3));
         System.out.println(result);
     }
 }

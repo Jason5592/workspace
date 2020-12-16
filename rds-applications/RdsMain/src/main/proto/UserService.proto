@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package com.archforce.ath.rds.grpc.proto;
+
+message AddUserInfoParams {
+  string username = 1;
+}
+
+message UserId {
+  int64 userId = 1;
+}
+
+service UserService {
+  rpc addUserInfo(AddUserInfoParams) returns (UserId);
+}

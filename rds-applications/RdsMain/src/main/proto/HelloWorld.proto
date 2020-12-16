@@ -26,7 +26,7 @@ message A3 {
 }
 
 service HelloWorldService {
-  rpc sayHello (Person) returns (Greeting);
-  rpc addOperation (A1) returns (A2);
-  rpc addOperation1 (A3) returns (A2);
+  rpc sayHello(Person) returns (Greeting);
+  rpc addOperation(A1) returns (A2);
+  rpc addOperation1(A3) returns (A2);
 }

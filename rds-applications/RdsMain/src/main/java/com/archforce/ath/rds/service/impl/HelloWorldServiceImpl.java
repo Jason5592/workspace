@@ -1,7 +1,7 @@
 package com.archforce.ath.rds.service.impl;
 
 import com.archforce.ath.rds.grpc.proto.*;
-import com.archforce.ath.rds.service.HelloService;
+import com.archforce.ath.rds.service.HelloWorldService;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -12,7 +12,7 @@ import java.util.List;
 @GrpcService
 @Service
 @Slf4j
-public class HelloServiceImpl extends HelloWorldServiceGrpc.HelloWorldServiceImplBase implements HelloService {
+public class HelloWorldServiceImpl extends HelloWorldServiceGrpc.HelloWorldServiceImplBase implements HelloWorldService {
 
     @Override
     public void sayHello(Person request, StreamObserver<Greeting> responseObserver) {

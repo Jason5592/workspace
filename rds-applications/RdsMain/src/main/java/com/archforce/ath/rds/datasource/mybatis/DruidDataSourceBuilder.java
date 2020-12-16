@@ -1,4 +1,4 @@
-package com.archforce.ath.rds.datasources;
+package com.archforce.ath.rds.datasource.mybatis;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
@@ -7,7 +7,7 @@ import com.alibaba.druid.pool.DruidDataSource;
  */
 public class DruidDataSourceBuilder {
 
-    private DruidDataSource dataSource = new DruidDataSource();
+    private final DruidDataSource dataSource = new DruidDataSource();
 
     public static DruidDataSourceBuilder newInstance() {
         return new DruidDataSourceBuilder();

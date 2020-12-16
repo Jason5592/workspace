@@ -1,4 +1,4 @@
-package com.archforce.ath.rds.datasources;
+package com.archforce.ath.rds.datasource.mybatis;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -16,41 +17,44 @@ import javax.sql.DataSource;
  * Created by Jason on 2019/6/24.
  */
 @Configuration
-@MapperScan(basePackages = DataSourceSlaveConfig.PACKAGE, sqlSessionFactoryRef = "sqlSessionFactorySlave")
-public class DataSourceSlaveConfig {
+@MapperScan(basePackages = DataSourceOneConfig.PACKAGE, sqlSessionFactoryRef = "sqlSessionFactoryOne")
+public class DataSourceOneConfig {
 
-    public static final String PACKAGE = "com.archforce.ath.rds.mapper.mapperSlave";
-    private static final String MAPPER_LOCATION = "classpath:com/archforce/ath/rds/mapper/mapperSlave/*.xml";
+    public static final String PACKAGE = "com.archforce.ath.rds.mapper.mapperOne";
+    private static final String MAPPER_LOCATION = "classpath:com/archforce/ath/rds/mapper/mapperOne/*.xml";
 
-    @Value("${spring.datasourceSlave.driverClassName}")
+    @Value("${spring.datasource.one.driverClassName}")
     private String driverClassName;
-    @Value("${spring.datasourceSlave.url}")
+    @Value("${spring.datasource.one.url}")
     private String url;
-    @Value("${spring.datasourceSlave.username}")
+    @Value("${spring.datasource.one.username}")
     private String username;
-    @Value("${spring.datasourceSlave.password}")
+    @Value("${spring.datasource.one.password}")
     private String password;
-    @Value("${spring.datasourceSlave.druid.initial-size}")
+    @Value("${spring.datasource.one.druid.initial-size}")
     private int initialSize;
-    @Value("${spring.datasourceSlave.druid.min-idle}")
+    @Value("${spring.datasource.one.druid.min-idle}")
     private int minIdle;
-    @Value("${spring.datasourceSlave.druid.max-active}")
+    @Value("${spring.datasource.one.druid.max-active}")
     private int maxActive;
-    @Value("${spring.datasourceSlave.druid.max-wait}")
+    @Value("${spring.datasource.one.druid.max-wait}")
     private int maxWait;
 
-    @Bean(name = "dataSourceSlave")
+    @Bean(name = "dataSourceOne")
+    @Primary
     public DataSource abroadDataSource() {
         return DruidDataSourceBuilder.newInstance().appendDriverClassName(driverClassName).appendUrl(url).appendUsername(username).appendPassword(password).appendInitialSize(initialSize).appendMinIdle(minIdle).appendMaxActive(maxActive).appendMaxWait(maxWait).getDataSource();
     }
 
-    @Bean(name = "transactionManagerSlave")
+    @Bean(name = "transactionManagerOne")
+    @Primary
     public DataSourceTransactionManager abroadTransactionManager() {
         return new DataSourceTransactionManager(abroadDataSource());
     }
 
-    @Bean(name = "sqlSessionFactorySlave")
-    public SqlSessionFactory abroadSqlSessionFactory(@Qualifier("dataSourceSlave") DataSource abroadDataSource) throws Exception {
+    @Bean(name = "sqlSessionFactoryOne")
+    @Primary
+    public SqlSessionFactory abroadSqlSessionFactory(@Qualifier("dataSourceOne") DataSource abroadDataSource) throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(abroadDataSource);
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(MAPPER_LOCATION));
