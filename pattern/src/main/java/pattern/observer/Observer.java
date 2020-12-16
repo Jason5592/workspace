@@ -1,0 +1,1 @@
+package pattern.observer;public interface Observer {    void watch(String message); }

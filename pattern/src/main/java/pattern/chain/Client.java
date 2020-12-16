@@ -1,0 +1,1 @@
+package pattern.chain;public class Client {    private static Handler handler;    public static void main(String[] args) {        handler = new ConcreteHandler();        handler.setSuccessor(null);        handler.handleRequest();    }}
