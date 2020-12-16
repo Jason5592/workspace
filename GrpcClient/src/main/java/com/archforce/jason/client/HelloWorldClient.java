@@ -1,6 +1,6 @@
 package com.archforce.jason.client;
 
-import com.archforce.jason.grpc.proto.*;
+import com.archforce.ath.rds.grpc.proto.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ public class HelloWorldClient {
     private static final HelloWorldServiceGrpc.HelloWorldServiceBlockingStub helloWorldServiceBlockingStub;
 
     static {
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 6561).usePlaintext().build();
+        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("192.168.162.128", 6561).usePlaintext().build();
         helloWorldServiceBlockingStub = HelloWorldServiceGrpc.newBlockingStub(managedChannel);
     }
 

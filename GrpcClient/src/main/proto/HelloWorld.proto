@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-package com.archforce.jason.grpc.proto;
+package com.archforce.ath.rds.grpc.proto;
 
 message Person {
   string first_name = 1;
