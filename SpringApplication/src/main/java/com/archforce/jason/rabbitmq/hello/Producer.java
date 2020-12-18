@@ -3,6 +3,7 @@ package com.archforce.jason.rabbitmq.hello;
 import com.archforce.jason.rabbitmq.RabbitmqClient;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.ConfirmListener;
+import com.rabbitmq.client.MessageProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class Producer {
         }
         String message = "hello";
         try {
-            channel.basicPublish("", QUEUE_HELLO, null, message.getBytes());
+            channel.basicPublish("", QUEUE_HELLO, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes());
             log.info(RABBITMQ_LOG_PREFIX + "basic publish success! Message[" + message + "].");
         } catch (Exception e) {
             log.error(RABBITMQ_LOG_PREFIX + "basic publish failed", e);

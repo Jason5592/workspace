@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package com.archforce.ath.rds.grpc.proto;
+
+// 消息类型
+enum MessageType {
+  ORIGINAL_MESSAGE = 0; // 原消息兼容格式
+  ORDER_MESSAGE = 1; // 订单消息
+  REPORT_MESSAGE = 2; // 回报消息
+  OUT_QUERY_MESSAGE = 3; // 外部查询消息
+  MARKET_MESSAGE = 4; // 行情消息
+  FUNCTION_MESSAGE = 5; // 时间片、探测、登出登出等功能消息
+  REAL_TIME_COMMAND_MESSAGE = 6; // 实时指令消息
+  REPEAL_ORDER_MESSAGE = 7; // 撤单消息
+  CUSTOMIZE_MESSAGE = 8; // 定制化消息
+}
+
+// 业务类型
+enum BusinessType {
+  CASH_AUCTION = 0; // 现金拍卖
+}
+
+// 公共参数
+message CommonParams {
+  string custId = 2; // 客户号
+  string fundAccountId = 3; // 资金账号
+  string accountId = 4; // 股东代码
+  int64 clientSeqId = 5; // 用户系统消息序号
+}
+
+// 股份持仓信息
+message StockInfo {
+  string securityId = 1; // 证券代码
+  string securitySymbol = 2; // 证券简称
+  string market = 3; // 市场
+  string accountId = 4; // 股东代码
+  int64 initQty = 5; // 日初持仓量
+  int64 leftQty = 6; // 剩余股份数量
+  int64 availableQty = 7; // 可用股份数量
+  int64 profitLoss = 8; // 浮动盈亏
+  int64 marketValue = 9; // 市值
+  int64 costPrice = 10; // 成本价 元/每张
+  int64 initCrdSellBuyShareQty = 11; // 日初融券买入量
+  int64 initCrdSellOccupiedAmt = 12; // 日初融券占用金额
+  int64 curCrdSellOccupiedQty = 13; // 当前融券买入量
+  int64 curCrdSellOccupiedAmt = 14; // 当前融券占用金额
+}
+
+// 查询股份持仓信息请求参数
+message QueryStockInfoRequestParams {
+  CommonParams commonParams = 1; // 公共参数
+  string clientFeatureCode = 2; // 终端识别码
+  string userInfo = 3; // 用户私有信息
+  string password = 4; // 密码
+  repeated string accountIds = 5; // 股东代码
+  BusinessType businessType = 6; // 业务类型
+  string market= 7; // 市场
+  string securityId = 8; // 证券代码
+  int64 queryIndex = 9; // 分页记录号 指定起始查询索引号,将返回索引号以后的明细,默认0表示从头开始查
+  int64 returnNum = 10; // 返回数量 默认0表示不指定
+}
+
+// 查询股份持仓信息返回参数
+message QueryStockInfoResponseParams {
+  MessageType messageType = 1; // 消息类型
+  CommonParams commonParams = 2; // 公共参数
+  int32 queryResultCode = 3; // 查询结果代码
+  string userInfo = 4; // 用户私有信息
+  int64 lastIndex = 5; // 条目索引号 最后一笔查询结果的索引号,当"lastIndex+1=totalNum"时表示已经查询到最后的记录;组合个数为0时,该值为-1
+  int64 totalNum = 6; // 条目总数
+  repeated StockInfo stockInfo = 7;
+}
+
+message QueryStockInfoResponse {
+  string result = 1; // 返回json字符串
+}
+
+// 股份持仓服务
+service StockService {
+  rpc queryStockInfo(QueryStockInfoRequestParams) returns (QueryStockInfoResponse); // 查询股份持仓信息
+}

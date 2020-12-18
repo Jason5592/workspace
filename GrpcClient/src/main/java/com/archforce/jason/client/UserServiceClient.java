@@ -11,23 +11,25 @@ import org.junit.Test;
 @Slf4j
 public class UserServiceClient {
 
-    private static final UserServiceGrpc.UserServiceBlockingStub helloWorldServiceBlockingStub;
+    private static final UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
 
     static {
         ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 6561).usePlaintext().build();
-        helloWorldServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
+        userServiceBlockingStub = UserServiceGrpc.newBlockingStub(managedChannel);
     }
 
     public long addUserInfo(String username) {
         AddUserInfoParams params = AddUserInfoParams.newBuilder().setUsername(username).build();
-        UserId userId = helloWorldServiceBlockingStub.addUserInfo(params);
+        UserId userId = userServiceBlockingStub.addUserInfo(params);
         return userId.getUserId();
     }
 
     @Test
     public void test1() {
         UserServiceClient userServiceClient = new UserServiceClient();
-        long userId = userServiceClient.addUserInfo("Jason");
+        long userId = userServiceClient.addUserInfo("Martin");
         System.out.println(userId);
+
+
     }
 }

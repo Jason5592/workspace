@@ -17,7 +17,7 @@ public class RabbitmqMessageService implements RabbitTemplate.ConfirmCallback, R
     private RabbitTemplate rabbitTemplate;
 
     public void sendMessage(String exchange, String routingKey, Object msg) {
-        //消息发送失败返回到队列中, yml需要配置 publisher-returns: true
+        //消息发送失败返回到队列中, yml需要配置 publisher-returns:true
         rabbitTemplate.setMandatory(true);
 
         //消息消费者确认收到消息后，手动ack回执

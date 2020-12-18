@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Slf4j
@@ -40,7 +41,7 @@ public class UserDaoImpl implements UserDao {
         PreparedStatementCreator preparedStatementCreator = connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"User_Name", "CTime"});
             ps.setString(1, userInfo.getUsername());
-            ps.setDate(2, new Date(userInfo.getCtime().getTime()));
+            ps.setTimestamp(2, new Timestamp(userInfo.getCtime().getTime()));
             return ps;
         };
 
