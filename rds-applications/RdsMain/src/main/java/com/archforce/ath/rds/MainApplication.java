@@ -1,18 +1,12 @@
 package com.archforce.ath.rds;
 
 
-import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
 import lombok.extern.slf4j.Slf4j;
-import net.devh.boot.grpc.server.serverfactory.GrpcServerConfigurer;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @Configuration
