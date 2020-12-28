@@ -15,11 +15,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Slf4j
 public class MainApplication {
 
-    public static void main(String[] args) {
-        log.info("**********************************************************************");
-        log.info(ServerConstants.LOGGER_PREFIX + "启动服务...");
-        SpringApplication.run(MainApplication.class, args);
-        log.info(ServerConstants.LOGGER_PREFIX + "启动服务完成。");
-        log.info("**********************************************************************");
-    }
+  public static void main(String[] args) {
+    log.info("**********************************************************************");
+    log.info(ServerConstants.LOGGER_PREFIX + "启动服务...");
+    SpringApplication.run(MainApplication.class, args);
+    log.info(ServerConstants.LOGGER_PREFIX + "启动服务完成。");
+    log.info("**********************************************************************");
+  }
 }

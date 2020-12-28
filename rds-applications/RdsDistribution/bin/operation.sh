@@ -187,7 +187,7 @@ status() {
 info() {
   echo -e "\033[36mSystem Information:\033[0m"
   echo -e "\033[36m****************************\033[0m"
-  echo `head -n 1 /etc/issue`
+  #echo `head -n 1 /etc/issue`
   echo `uname -a`
   echo
   echo `$JAVA_HOME/bin/java -version`
