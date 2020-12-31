@@ -12,6 +12,10 @@ message Greeting {
   string message = 1;
 }
 
+message Result {
+  string message = 1;
+}
+
 message A1 {
   int32 a = 1;
   int32 b = 2;
@@ -26,7 +30,9 @@ message A3 {
 }
 
 service HelloWorldService {
-  rpc sayHello(Person) returns (Greeting);
-  rpc addOperation(A1) returns (A2);
-  rpc addOperation1(A3) returns (A2);
+  rpc sayHelloByStream (A3) returns (stream Greeting);
+  rpc sayHelloByStream1 (A3) returns (stream Greeting);
+  rpc sayHello (Person) returns (Greeting);
+  rpc addOperation (A1) returns (A2);
+  rpc addOperation1 (A3) returns (A2);
 }

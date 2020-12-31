@@ -25,6 +25,11 @@ public final class HelloWorld {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_archforce_ath_rds_grpc_proto_Greeting_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_archforce_ath_rds_grpc_proto_Result_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_archforce_ath_rds_grpc_proto_Result_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_archforce_ath_rds_grpc_proto_A1_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -51,16 +56,22 @@ public final class HelloWorld {
       "\n\020HelloWorld.proto\022 com.archforce.ath.rd" +
       "s.grpc.proto\"/\n\006Person\022\022\n\nfirst_name\030\001 \001" +
       "(\t\022\021\n\tlast_name\030\002 \001(\t\"\033\n\010Greeting\022\017\n\007mes" +
-      "sage\030\001 \001(\t\"\032\n\002A1\022\t\n\001a\030\001 \001(\005\022\t\n\001b\030\002 \001(\005\"\025" +
-      "\n\002A2\022\017\n\007message\030\001 \001(\005\"\017\n\002A3\022\t\n\001i\030\001 \003(\0052\256" +
-      "\002\n\021HelloWorldService\022`\n\010sayHello\022(.com.a" +
-      "rchforce.ath.rds.grpc.proto.Person\032*.com" +
-      ".archforce.ath.rds.grpc.proto.Greeting\022Z" +
-      "\n\014addOperation\022$.com.archforce.ath.rds.g" +
-      "rpc.proto.A1\032$.com.archforce.ath.rds.grp" +
-      "c.proto.A2\022[\n\raddOperation1\022$.com.archfo" +
-      "rce.ath.rds.grpc.proto.A3\032$.com.archforc" +
-      "e.ath.rds.grpc.proto.A2B\002P\001b\006proto3"
+      "sage\030\001 \001(\t\"\031\n\006Result\022\017\n\007message\030\001 \001(\t\"\032\n" +
+      "\002A1\022\t\n\001a\030\001 \001(\005\022\t\n\001b\030\002 \001(\005\"\025\n\002A2\022\017\n\007messa" +
+      "ge\030\001 \001(\005\"\017\n\002A3\022\t\n\001i\030\001 \003(\0052\377\003\n\021HelloWorld" +
+      "Service\022f\n\020sayHelloByStream\022$.com.archfo" +
+      "rce.ath.rds.grpc.proto.A3\032*.com.archforc" +
+      "e.ath.rds.grpc.proto.Greeting0\001\022g\n\021sayHe" +
+      "lloByStream1\022$.com.archforce.ath.rds.grp" +
+      "c.proto.A3\032*.com.archforce.ath.rds.grpc." +
+      "proto.Greeting0\001\022`\n\010sayHello\022(.com.archf" +
+      "orce.ath.rds.grpc.proto.Person\032*.com.arc" +
+      "hforce.ath.rds.grpc.proto.Greeting\022Z\n\014ad" +
+      "dOperation\022$.com.archforce.ath.rds.grpc." +
+      "proto.A1\032$.com.archforce.ath.rds.grpc.pr" +
+      "oto.A2\022[\n\raddOperation1\022$.com.archforce." +
+      "ath.rds.grpc.proto.A3\032$.com.archforce.at" +
+      "h.rds.grpc.proto.A2B\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -86,20 +97,26 @@ public final class HelloWorld {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_archforce_ath_rds_grpc_proto_Greeting_descriptor,
         new java.lang.String[] { "Message", });
-    internal_static_com_archforce_ath_rds_grpc_proto_A1_descriptor =
+    internal_static_com_archforce_ath_rds_grpc_proto_Result_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_com_archforce_ath_rds_grpc_proto_Result_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_archforce_ath_rds_grpc_proto_Result_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_com_archforce_ath_rds_grpc_proto_A1_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_archforce_ath_rds_grpc_proto_A1_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_archforce_ath_rds_grpc_proto_A1_descriptor,
         new java.lang.String[] { "A", "B", });
     internal_static_com_archforce_ath_rds_grpc_proto_A2_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_com_archforce_ath_rds_grpc_proto_A2_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_archforce_ath_rds_grpc_proto_A2_descriptor,
         new java.lang.String[] { "Message", });
     internal_static_com_archforce_ath_rds_grpc_proto_A3_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_com_archforce_ath_rds_grpc_proto_A3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_archforce_ath_rds_grpc_proto_A3_descriptor,

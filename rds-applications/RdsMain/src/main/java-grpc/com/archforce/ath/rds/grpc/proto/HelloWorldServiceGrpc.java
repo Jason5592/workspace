@@ -27,6 +27,70 @@ public final class HelloWorldServiceGrpc {
   public static final String SERVICE_NAME = "com.archforce.ath.rds.grpc.proto.HelloWorldService";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.A3,
+      com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloByStreamMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "sayHelloByStream",
+      requestType = com.archforce.ath.rds.grpc.proto.A3.class,
+      responseType = com.archforce.ath.rds.grpc.proto.Greeting.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.A3,
+      com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloByStreamMethod() {
+    io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.A3, com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloByStreamMethod;
+    if ((getSayHelloByStreamMethod = HelloWorldServiceGrpc.getSayHelloByStreamMethod) == null) {
+      synchronized (HelloWorldServiceGrpc.class) {
+        if ((getSayHelloByStreamMethod = HelloWorldServiceGrpc.getSayHelloByStreamMethod) == null) {
+          HelloWorldServiceGrpc.getSayHelloByStreamMethod = getSayHelloByStreamMethod = 
+              io.grpc.MethodDescriptor.<com.archforce.ath.rds.grpc.proto.A3, com.archforce.ath.rds.grpc.proto.Greeting>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "com.archforce.ath.rds.grpc.proto.HelloWorldService", "sayHelloByStream"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.archforce.ath.rds.grpc.proto.A3.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.archforce.ath.rds.grpc.proto.Greeting.getDefaultInstance()))
+                  .setSchemaDescriptor(new HelloWorldServiceMethodDescriptorSupplier("sayHelloByStream"))
+                  .build();
+          }
+        }
+     }
+     return getSayHelloByStreamMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.A3,
+      com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloByStream1Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "sayHelloByStream1",
+      requestType = com.archforce.ath.rds.grpc.proto.A3.class,
+      responseType = com.archforce.ath.rds.grpc.proto.Greeting.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.A3,
+      com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloByStream1Method() {
+    io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.A3, com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloByStream1Method;
+    if ((getSayHelloByStream1Method = HelloWorldServiceGrpc.getSayHelloByStream1Method) == null) {
+      synchronized (HelloWorldServiceGrpc.class) {
+        if ((getSayHelloByStream1Method = HelloWorldServiceGrpc.getSayHelloByStream1Method) == null) {
+          HelloWorldServiceGrpc.getSayHelloByStream1Method = getSayHelloByStream1Method = 
+              io.grpc.MethodDescriptor.<com.archforce.ath.rds.grpc.proto.A3, com.archforce.ath.rds.grpc.proto.Greeting>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "com.archforce.ath.rds.grpc.proto.HelloWorldService", "sayHelloByStream1"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.archforce.ath.rds.grpc.proto.A3.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.archforce.ath.rds.grpc.proto.Greeting.getDefaultInstance()))
+                  .setSchemaDescriptor(new HelloWorldServiceMethodDescriptorSupplier("sayHelloByStream1"))
+                  .build();
+          }
+        }
+     }
+     return getSayHelloByStream1Method;
+  }
+
   private static volatile io.grpc.MethodDescriptor<com.archforce.ath.rds.grpc.proto.Person,
       com.archforce.ath.rds.grpc.proto.Greeting> getSayHelloMethod;
 
@@ -152,6 +216,20 @@ public final class HelloWorldServiceGrpc {
 
     /**
      */
+    public void sayHelloByStream(com.archforce.ath.rds.grpc.proto.A3 request,
+        io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting> responseObserver) {
+      asyncUnimplementedUnaryCall(getSayHelloByStreamMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void sayHelloByStream1(com.archforce.ath.rds.grpc.proto.A3 request,
+        io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting> responseObserver) {
+      asyncUnimplementedUnaryCall(getSayHelloByStream1Method(), responseObserver);
+    }
+
+    /**
+     */
     public void sayHello(com.archforce.ath.rds.grpc.proto.Person request,
         io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting> responseObserver) {
       asyncUnimplementedUnaryCall(getSayHelloMethod(), responseObserver);
@@ -173,6 +251,20 @@ public final class HelloWorldServiceGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getSayHelloByStreamMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.archforce.ath.rds.grpc.proto.A3,
+                com.archforce.ath.rds.grpc.proto.Greeting>(
+                  this, METHODID_SAY_HELLO_BY_STREAM)))
+          .addMethod(
+            getSayHelloByStream1Method(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.archforce.ath.rds.grpc.proto.A3,
+                com.archforce.ath.rds.grpc.proto.Greeting>(
+                  this, METHODID_SAY_HELLO_BY_STREAM1)))
           .addMethod(
             getSayHelloMethod(),
             asyncUnaryCall(
@@ -218,6 +310,22 @@ public final class HelloWorldServiceGrpc {
 
     /**
      */
+    public void sayHelloByStream(com.archforce.ath.rds.grpc.proto.A3 request,
+        io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getSayHelloByStreamMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void sayHelloByStream1(com.archforce.ath.rds.grpc.proto.A3 request,
+        io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getSayHelloByStream1Method(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void sayHello(com.archforce.ath.rds.grpc.proto.Person request,
         io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting> responseObserver) {
       asyncUnaryCall(
@@ -257,6 +365,22 @@ public final class HelloWorldServiceGrpc {
     protected HelloWorldServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new HelloWorldServiceBlockingStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.archforce.ath.rds.grpc.proto.Greeting> sayHelloByStream(
+        com.archforce.ath.rds.grpc.proto.A3 request) {
+      return blockingServerStreamingCall(
+          getChannel(), getSayHelloByStreamMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.archforce.ath.rds.grpc.proto.Greeting> sayHelloByStream1(
+        com.archforce.ath.rds.grpc.proto.A3 request) {
+      return blockingServerStreamingCall(
+          getChannel(), getSayHelloByStream1Method(), getCallOptions(), request);
     }
 
     /**
@@ -324,9 +448,11 @@ public final class HelloWorldServiceGrpc {
     }
   }
 
-  private static final int METHODID_SAY_HELLO = 0;
-  private static final int METHODID_ADD_OPERATION = 1;
-  private static final int METHODID_ADD_OPERATION1 = 2;
+  private static final int METHODID_SAY_HELLO_BY_STREAM = 0;
+  private static final int METHODID_SAY_HELLO_BY_STREAM1 = 1;
+  private static final int METHODID_SAY_HELLO = 2;
+  private static final int METHODID_ADD_OPERATION = 3;
+  private static final int METHODID_ADD_OPERATION1 = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -345,6 +471,14 @@ public final class HelloWorldServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_SAY_HELLO_BY_STREAM:
+          serviceImpl.sayHelloByStream((com.archforce.ath.rds.grpc.proto.A3) request,
+              (io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting>) responseObserver);
+          break;
+        case METHODID_SAY_HELLO_BY_STREAM1:
+          serviceImpl.sayHelloByStream1((com.archforce.ath.rds.grpc.proto.A3) request,
+              (io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting>) responseObserver);
+          break;
         case METHODID_SAY_HELLO:
           serviceImpl.sayHello((com.archforce.ath.rds.grpc.proto.Person) request,
               (io.grpc.stub.StreamObserver<com.archforce.ath.rds.grpc.proto.Greeting>) responseObserver);
@@ -418,6 +552,8 @@ public final class HelloWorldServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HelloWorldServiceFileDescriptorSupplier())
+              .addMethod(getSayHelloByStreamMethod())
+              .addMethod(getSayHelloByStream1Method())
               .addMethod(getSayHelloMethod())
               .addMethod(getAddOperationMethod())
               .addMethod(getAddOperation1Method())
