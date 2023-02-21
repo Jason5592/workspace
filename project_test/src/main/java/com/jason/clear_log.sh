@@ -1,0 +1,1 @@
+find /data/wwwlogs/csp -mtime +30 -type f -name \*.log.* | xargs rm -f
